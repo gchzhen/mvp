@@ -5,9 +5,11 @@ const random = () => {
 
 }
 const getImages = function() {
-  const query = 'select * from images';
+  // const = random();
+  const params = [random(), random()];
+  const query = 'select * from images where id = (?) or id = (?)';
   return new Promise((resolve, reject) => {
-    connection.query(query, (err, data) => {
+    connection.query(query, params, (err, data) => {
       if (err) {
         reject(err);
       } else {
